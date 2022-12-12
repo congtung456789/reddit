@@ -44,8 +44,8 @@ const ChatRoom = () => {
     };
 
     useEffect(() => {
-        socket.current = io("http://192.168.1.112:8089", {
-            transports: ["websocket"],
+        socket.current = io("http://localhost:8089", {
+          transports: ["websocket"],
         });
         socket.current.on("getMessage", (data) => {
             setReceivedMsg({
@@ -225,6 +225,7 @@ const ChatRoom = () => {
             )}
             <div className="chat-box-bot">
                 <InputField
+                    
                     classStyle="chat-msg-input"
                     inputType="textarea"
                     placeholder="write something..."

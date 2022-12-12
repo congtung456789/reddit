@@ -43,8 +43,8 @@ const AddMember = () => {
             });
     };
     useEffect(()=>{
-        socket.current = io("http://192.168.1.112:8089", {
-            transports: ["websocket"],
+        socket.current = io("http://localhost:8089", {
+          transports: ["websocket"],
         });
     });
     useEffect(() => {

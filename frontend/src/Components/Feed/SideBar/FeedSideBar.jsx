@@ -37,7 +37,7 @@ const SideBar = () => {
                   alt="profile pic"
                 />
               </div>
-              <div className="text-4xl font-bold">u/{user?.username}</div>
+              <div className="text-4xl font-bold">{user?.username}</div>
               {/*<div className="sidebar-styleava">*/}
               {/*  <FaTrophy size={"24px"} className="sidebar-shirt" />*/}
               {/*  <span*/}

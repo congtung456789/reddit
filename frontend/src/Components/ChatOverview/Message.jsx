@@ -1,3 +1,5 @@
+
+
 import { useSelector } from "react-redux";
 import { format } from "timeago.js";
 import React from "react";
@@ -15,6 +17,7 @@ const Message = (props) => {
       </div>
       <div className="messageBottom">{format(message.createdAt)}</div>
     </section>
+    
   );
 };
 

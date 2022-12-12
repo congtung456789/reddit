@@ -47,16 +47,7 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllPosts(dispatch, user?.accessToken, filter, pageNumber, setHasMore);
-  }, [
-    user,
-    filter,
-    createPost,
-    allComments,
-    dispatch,
-    deleteComment,
-    interactPost,
-    pageNumber,
-  ]);
+  }, [user, filter, createPost, allComments, dispatch, deleteComment, interactPost, pageNumber, setHasMore]);
 
   return (
     <FeedLayout>
