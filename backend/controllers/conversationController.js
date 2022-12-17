@@ -3,8 +3,10 @@ const User = require("../models/User");
 const functionUtils = require("../utils/functionUtils");
 const conversationController = {
     createConversation: async (req, res) => {
+        const user = await User.findById(req.body.receiverId).lean();
         const newConversation = new Conversation({
             members: [req.body.senderId, req.body.receiverId],
+            nameGroup: user.username
         });
         try {
             const savedConversation = await newConversation.save();
@@ -43,13 +45,22 @@ const conversationController = {
                 }).lean();
                 if (conversation) {
                     if (!conversation[0].members.includes(req.body.userAddId)) {
+                        let removeMember = [];
+                        if (conversation[0].membersRemove){
+                            if (conversation[0].membersRemove.includes(req.body.userAddId) && conversation[0].membersRemove.length>0){
+                                removeMember = conversation[0].membersRemove.filter((m) => m !== req.body.userAddId);
+                            }
+                        }
                         const newMembers = [
                             req.body.userAddId,
                             ...conversation[0].members
                         ]
                         Conversation.findOneAndUpdate(
                             {_id: {$in: [req.body.conversationId]}},
-                            {members: newMembers},
+                            {
+                                members: newMembers,
+                                membersRemove:removeMember
+                            },
                             {new: true, upsert: true},
                             (error) => {
                                 console.log(error);
@@ -69,7 +80,6 @@ const conversationController = {
     },
     removeUserFromConversation: async (req, res) => {
         try {
-            let message = "";
             if (req.body.conversationId) {
                 const conversation = await Conversation.find({
                     _id: {$in: [req.body.conversationId]},
@@ -77,26 +87,42 @@ const conversationController = {
                 if (conversation) {
                     let allMember = conversation[0].members;
                     if (allMember.includes(req.body.userRemoveId)) {
-                        if (allMember.length>2){
-                            functionUtils.removeItemInArray(allMember,req.body.userRemoveId);
+                        if (allMember.length > 2) {
+                            const newMembersRemove = [];
+                            if (conversation[0].membersRemove){
+                                if (conversation[0].membersRemove.length <= 0){
+                                    newMembersRemove.push(req.body.userRemoveId);
+                                }else if (!newMembersRemove.includes(req.body.userRemoveId)){
+                                    newMembersRemove.push(req.body.userRemoveId);
+                                }
+                            }else {
+                                newMembersRemove.push(req.body.userRemoveId);
+                            }
+                            functionUtils.removeItemInArray(allMember, req.body.userRemoveId);
                             Conversation.findOneAndUpdate(
                                 {_id: {$in: [req.body.conversationId]}},
-                                {members: allMember},
+                                {
+                                    members: allMember,
+                                    membersRemove:newMembersRemove
+                                },
                                 {new: true, upsert: true},
                                 (error) => {
                                     console.log(error);
                                 });
-                            message = "Remove member success" ;
-                        } else{
-                            message = "Can't remove member success";
+                            let message = "Remove member success";
+                            res.status(200).json(message);
+                        } else {
+                            let message = "Can't remove member";
+                            res.status(400).json(message);
                         }
                     } else {
-                        message = "User can't find in conversation";
+                        let message = "User can't find in conversation";
+                        res.status(400).json(message);
                     }
                 } else {
-                    message = "Can not find conversation to add user";
+                    let message = "Can not find conversation to add user";
+                    res.status(400).json(message);
                 }
-                res.status(200).json(message)
             }
         } catch (err) {
             console.log(err);
@@ -105,8 +131,9 @@ const conversationController = {
     },
     getAllUserInConversation: async (req, res) => {
         try {
+
             const conversation = await Conversation.find({
-                _id: {$in: [req.body.conversationId]},
+                _id: {$in: [req.params.conversationId]},
             }).lean();
             let allMember = conversation[0].members;
             const allUser = await User.find({
@@ -116,6 +143,21 @@ const conversationController = {
         } catch (Err) {
             console.log(Err);
             res.status(500).json(Err);
+        }
+    },
+    changeNameChatGroup: async (req, res) => {
+        try {
+            Conversation.findOneAndUpdate(
+                {_id: {$in: req.body.conversationId}},
+                {nameGroup: req.body.conversationName},
+                {new: true, upsert: true},
+                (error) => {
+                    console.log(error);
+                }
+            );
+            return res.status(200).json("Update group name success");
+        } catch (err) {
+            return res.status(500).json(err);
         }
     }
 };

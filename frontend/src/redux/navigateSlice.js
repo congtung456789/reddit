@@ -24,6 +24,9 @@ export const navigateSlice = createSlice({
     },
     showAddMember:{
       open:false
+    },
+    roomName:{
+      name:"",
     }
   },
   reducers: {
@@ -47,6 +50,9 @@ export const navigateSlice = createSlice({
     },
     setShowAction:(state, action)=>{
       state.showAddMember.open = action.payload;
+    },
+    setFullName:(state,action)=>{
+      state.roomName.name = action.payload
     }
   },
 });
@@ -58,6 +64,7 @@ export const {
   fullPostToggle,
   messageToggle,
   setRoom,
-  setShowAction
+  setShowAction,
+  setFullName
 } = navigateSlice.actions;
 export default navigateSlice.reducer;

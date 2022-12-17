@@ -5,7 +5,7 @@ export const listContainer = {
     //{ name: "News", path: "/news" },
     { name: "Friends", path: "/friends" },
   ],
-  tags: ["Tag1", "Tag2", "chơi tí", "nghe ok", "đéo biết thế nào"],
+  tags: ["None", "Sad", "Feeling", "Happy", "Feeling bad"],
   avaUrl: [
     "https://preview.redd.it/rrz3hmsxcll71.png?width=640&crop=smart&auto=webp&s=87cc5ed38d8f088ef9fffef7a4c5756b64309d6a",
     "https://preview.redd.it/fc9k38jwfwv51.png?auto=webp&s=9ce3d4c488091bb21969fd0fad7a6d89e4bfc50d",
@@ -18,4 +18,4 @@ export const listContainer = {
     "https://preview.redd.it/26s9eejm8vz51.png?auto=webp&s=e38d32ee0ffa0666fade2abd62ed59037c119990",
   ],
 };
-export const baseURL = "http://localhost:8088/v1";
+export const baseURL = "http://192.168.1.112:8088/v1";

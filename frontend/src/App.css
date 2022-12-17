@@ -20,7 +20,17 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+@media screen and (min-width: 1000px) {
+  .App {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    margin-bottom: 0rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
 body {
   text-align: left;
   scroll-behavior: smooth;

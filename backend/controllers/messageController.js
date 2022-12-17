@@ -18,7 +18,6 @@ const messageController = {
         let imageUrl = await minioUtils.getFileUrl( process.env.MINIO_BUCKET_MESSAGE, savedMsg.text);
         savedMsg.text = imageUrl;
       }
-      console.log(savedMsg);
       res.status(200).json(savedMsg);
     } catch (err) {
       res.status(500).json(err);

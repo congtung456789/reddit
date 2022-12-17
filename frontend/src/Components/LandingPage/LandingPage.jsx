@@ -12,8 +12,8 @@ const LandingPage = () => {
   };
   return (
     <section className="landing-container">
-      <div className="landing-header"> Reddat <span className="beta"> Beta </span> </div>
-      <div className="landing-sub"> Definitely not Reddit</div>
+      <div className="landing-header"> FOURWAY <span className="beta"> Beta </span> </div>
+      <div className="landing-sub">  connect everyone </div>
       <img src={phoneMockup} className="phone-mockup" alt="phone mockup" />
       <div className="button-container">
         <button className="login" onClick={goToSignIn}>

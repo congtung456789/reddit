@@ -102,3 +102,97 @@
   height:100vh;
   background-color:grey;
 }
+@media screen and (min-width: 1000px) {
+  .feed-sidebar-opened {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    height: 100vh;
+    background-color: #222222;
+    color: rgb(219, 218, 218);
+    min-width: 20%;
+    transition: transform 300ms;
+  }
+  .feed-container-opened {
+    height: 100vh;
+    background-color: #0c0c0c;
+    width: 80%;
+    align-self: flex-end;
+    transition: width 300ms;
+    overflow-x: hidden;
+  }
+  .feed-username-display {
+    text-align: center;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    font-size: 1.15rem;
+    margin-left: 35rem;
+    border-radius: 4px;
+    background: rgba(66, 66, 66, 0.78);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.4px);
+    -webkit-backdrop-filter: blur(11.4px);
+  }
+  .feed-username-display-open {
+    text-align: center;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    font-size: 1.15rem;
+    margin-left: 24rem;
+    border-radius: 4px;
+    background: rgba(66, 66, 66, 0.78);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.4px);
+    -webkit-backdrop-filter: blur(11.4px);
+  }
+}
+@media screen and (min-width: 1700px) {
+  .feed-sidebar-opened {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: absolute;
+    height: 100vh;
+    background-color: #222222;
+    color: rgb(219, 218, 218);
+    min-width: 20%;
+    transition: transform 300ms;
+  }
+  .feed-container-opened {
+    height: 100vh;
+    background-color: #0c0c0c;
+    width: 80%;
+    align-self: flex-end;
+    transition: width 300ms;
+    overflow-x: hidden;
+  }
+  .feed-username-display {
+    text-align: center;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    font-size: 1.15rem;
+    margin-left: 47rem;
+    border-radius: 4px;
+    background: rgba(66, 66, 66, 0.78);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.4px);
+    -webkit-backdrop-filter: blur(11.4px);
+  }
+  .feed-username-display-open {
+    text-align: center;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    font-size: 1.15rem;
+    margin-left: 35rem;
+    border-radius: 4px;
+    background: rgba(66, 66, 66, 0.78);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.4px);
+    -webkit-backdrop-filter: blur(11.4px);
+  }
+}

@@ -4,7 +4,7 @@ import { baseURL } from "../../utils/listContainer";
 import "./chatroom.css";
 
 const Conversation = (props) => {
-  const { conversation, currentUser } = props;
+  const { conversation, currentUser,conversationName } = props;
   const [user, setUser] = useState(null);
   useEffect(() => {
     const friendId = conversation.members.find((m) => m !== currentUser?._id);
@@ -31,7 +31,7 @@ const Conversation = (props) => {
         />
       </div>
       <div className="preview-container">
-        <div className="preview-username">{user?.username}</div>
+        <div className="preview-username">{conversationName}</div>
       </div>
     </section>
   );

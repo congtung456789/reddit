@@ -8,7 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { messageToggle, sideBarToggle } from "../../../redux/navigateSlice";
 import InputField from "../../InputFields/Input";
 import "../feed.css";
-const FeedHeader = () => {
+const FeedHeader = (props) => {
+  const classSearch = props.classNameOpen;
+  const feedUserDisplay = props.feedUserDisplay;
   const user = useSelector((state) => state.user.user?.currentUser);
   const openMsg = useSelector((state) => state.nav.message.open);
   const dispatch = useDispatch();
@@ -60,13 +62,13 @@ const FeedHeader = () => {
       />
       <div className="search-container">
         <InputField
-          classStyle="search-bar"
+          classStyle={classSearch}
           placeholder="🔎 Search for username"
           data={search}
           setData={setSearch}
         />
         {openSearch && (
-          <div className="feed-username-display">
+          <div className={feedUserDisplay}>
             {result?.map((username) => {
               return (
                 <div

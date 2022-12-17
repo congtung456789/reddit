@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Conversation from "./Conversation";
 import { baseURL } from "../../utils/listContainer";
-import { setRoom } from "../../redux/navigateSlice";
+import { setRoom,setFullName } from "../../redux/navigateSlice";
 import Loading from "../Loading/Loading";
 const ChatOverview = () => {
   //dummy data
@@ -42,6 +42,7 @@ const ChatOverview = () => {
 
   const openConversation = (conversation) => {
     dispatch(setRoom(conversation));
+    dispatch(setFullName(conversation.nameGroup));
     navigate("/chat/" + conversation._id);
   };
   return (
@@ -69,6 +70,7 @@ const ChatOverview = () => {
                     key={conversation._id}
                     conversation={conversation}
                     currentUser={user}
+                    conversationName={conversation.nameGroup}
                   />
                 </div>
               );

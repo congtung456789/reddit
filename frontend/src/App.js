@@ -43,7 +43,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          {isMobile ? (
+          {/*{isMobile ? (*/}
             <>
               <Route path="/landingpage" element={<LandingPage />} />
               <Route path="/login" element={<Login />} />
@@ -103,9 +103,9 @@ function App() {
                 }
               />
             </>
-          ) : (
-            <Route path="/landingpage" element={<DesktopLanding />} />
-          )}
+          {/*) : (*/}
+          {/*  <Route path="/landingpage" element={<DesktopLanding />} />*/}
+          {/*)}*/}
         </Routes>
       </div>
     </Router>

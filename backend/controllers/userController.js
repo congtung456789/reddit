@@ -133,11 +133,20 @@ const userController = {
   getLeaderboard: async (req, res) => {
     try {
       const users = await User.find().sort({ karmas: -1 }).limit(10);
-      res.status(200).json(users);
+      return res.status(200).json(users);
     } catch (err) {
       return res.status(500).json(err);
     }
   },
+  getAllUserWithId: async (req,res)=>{
+    try{
+      const users = await User.find({
+        _id:{$in: req.body.users}
+      });
+      return res.status(200).json(users);
+    }catch (err) {
+      return res.status(500).json(err);
+    }
+  }
 };
-
 module.exports = userController;

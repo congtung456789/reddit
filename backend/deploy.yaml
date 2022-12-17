@@ -1,0 +1,58 @@
+version: '3.2'
+services:
+  mongo:
+    image: mongo
+    deploy:
+      replicas: 1
+    restart: always
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: trungdv
+#      MONGO_INITDB_ROOT_PASSWORD: trungdv123
+#    volumes:
+#      - db-data:var/lib/mongo/data
+  mongo-express:
+    image: mongo-express
+    deploy:
+      replicas: 1
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://192.168.0.103:27017/
+  server:
+    image: 44128920/reddit-server-1:0.0.1
+    deploy:
+      replicas: 1
+    restart: always
+    ports:
+      - 8088:8088
+    environment:
+      DB_URL:  mongodb://192.168.0.103:27017/
+      MINIO_PORT: 9001
+      MINIO_ENDPOINT: 192.168.0.103
+      MINIO_HOST: "http://192.168.0.103:9001"
+      MINIO_SSL: "false"
+      MINIO_ACCESS_KEY: "minio99"
+      MINIO_SECRET_KEY: "minio123"
+      MINIO_BUCKET_POST: "post-pucket"
+      MINIO_BUCKET_MESSAGE: "message-bucket"
+  server-socket:
+    image: 44128920/reddit-socket:0.0.1
+    deploy:
+      replicas: 1
+    restart: always
+    ports:
+      - 8089:8089
+    environment:
+      MINIO_PORT: 9001
+      MINIO_ENDPOINT: 192.168.0.103
+      MINIO_HOST: "http://192.168.0.103:9001"
+      MINIO_SSL: "false"
+      MINIO_ACCESS_KEY: "minio99"
+      MINIO_SECRET_KEY: "minio123"
+      MINIO_BUCKET_POST: "post-pucket"
+      MINIO_BUCKET_MESSAGE: "message-bucket"
+volumes:
+  db-data:

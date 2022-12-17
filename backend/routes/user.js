@@ -32,6 +32,11 @@ router.put(
   middlewareController.verifyToken,
   userController.followUser
 );
+router.post(
+    "/get-all-user-with-id",
+    middlewareController.verifyToken,
+    userController.getAllUserWithId
+);
 
 //SEARCH FOR USERS
 router.get("/", middlewareController.verifyToken, userController.searchAllUser);

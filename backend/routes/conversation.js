@@ -34,9 +34,14 @@ router.post(
     conversationController.removeUserFromConversation
 )
 router.get(
-    "/get-user-conversation/:id",
+    "/get-user-conversation/:conversationId",
     middlewareController.verifyToken,
     conversationController.getAllUserInConversation
+)
+router.post(
+    "/update-group-name",
+    middlewareController.verifyToken,
+    conversationController.changeNameChatGroup
 )
 
 module.exports = router;

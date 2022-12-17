@@ -11,12 +11,15 @@ header {
     font-weight: 700;
     font-size: 1rem;
 }
+.feed-logo{
+    height: 85px;
+}
 .search-user {
     text-align: start;
-    margin-left: 56%;
+    margin-left: 100%;
     font-size: 1rem;
-    max-width: 100%;
     align-self: center;
+    width: 171%;
 }
 .follow{
     background-color: transparent;
@@ -27,7 +30,9 @@ header {
     font-family: "Noto Sans", sans-serif;
     margin: 0;
 }
-
+.search-container{
+    flex-direction: column-reverse;
+}
 .info-container {
     display: flex;
     flex-direction: column;
@@ -114,4 +119,14 @@ header {
     backdrop-filter: blur(11.4px);
     margin-left: 54%;
     -webkit-backdrop-filter: blur(11.4px);
+}
+.buttonClose{
+    margin-top: 0rem;
+    position: absolute;
+    right: 76px;
+    bottom: 21px;
+    width: 7%;
+}
+.titleClass{
+    font-size: 20px;
 }

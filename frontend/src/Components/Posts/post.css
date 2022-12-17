@@ -53,7 +53,32 @@
   margin-bottom: 1rem;
   font-size: 1.25rem;
 }
-
+@media screen and (min-width: 1000px){
+  .submit {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: 12px;
+    width: 30%;
+    height: 36px;
+    background-color: #0386d1;
+  }
+}
+@media screen and (min-width: 1700px){
+  .submit {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: 12px;
+    width: 30%;
+    height: 36px;
+    background-color: #0386d1;
+  }
+}
 .submit {
   text-align: center;
   display: flex;
@@ -61,7 +86,7 @@
   justify-content: center;
   font-weight: 700;
   border-radius: 12px;
-  width: 90px;
+  width: 30%;
   height: 36px;
   background-color: #0386d1;
 }
@@ -104,6 +129,30 @@ input[type="file"] {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+}
+@media screen and (min-width: 1000px){
+  .makepost-file-label {
+    background-color: #0386d1;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 10%;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+}
+@media screen and (min-width: 1500px){
+  .makepost-file-label {
+    background-color: #0386d1;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 10%;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
 }
 .makepost-file-label::before {
   font-size: 1rem;
@@ -223,4 +272,36 @@ f.comments-interact > form {
   font-size: 1rem;
   max-width: 100%;
   align-self: center;
+}
+@media screen and (min-width: 1000px) {
+  .search-bar {
+    text-align: start;
+    margin-left: 35rem;
+    font-size: 1rem;
+    max-width: 100%;
+    align-self: center;
+  }
+  .search-bar-open {
+    text-align: start;
+    margin-left: 24rem;
+    font-size: 1rem;
+    max-width: 100%;
+    align-self: center;
+  }
+}
+@media screen and (min-width: 1700px) {
+  .search-bar-open {
+    text-align: start;
+    margin-left: 35rem;
+    font-size: 1rem;
+    max-width: 100%;
+    align-self: center;
+  }
+  .search-bar {
+    text-align: start;
+    margin-left: 47rem;
+    font-size: 1rem;
+    max-width: 100%;
+    align-self: center;
+  }
 }
