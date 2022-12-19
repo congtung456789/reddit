@@ -1,7 +1,7 @@
 export const listContainer = {
   routes: [
     { name: "Home", path: "/" },
-      // bỏ đi chức năng hiển thị các thông tin hot
+    // bỏ đi chức năng hiển thị các thông tin hot
     //{ name: "News", path: "/news" },
     { name: "Friends", path: "/friends" },
   ],
@@ -18,4 +18,4 @@ export const listContainer = {
     "https://preview.redd.it/26s9eejm8vz51.png?auto=webp&s=e38d32ee0ffa0666fade2abd62ed59037c119990",
   ],
 };
-export const baseURL = "http://192.168.1.112:8088/v1";
+export const baseURL = "http://localhost:8088/v1";
