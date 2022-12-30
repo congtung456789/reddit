@@ -56,15 +56,6 @@ function App() {
                   </RequireAuth>
                 }
               />
-              {/*bỏ phần menu news*/}
-              {/*<Route*/}
-              {/*  path="/news"*/}
-              {/*  element={*/}
-              {/*    <RequireAuth>*/}
-              {/*      <News />*/}
-              {/*    </RequireAuth>*/}
-              {/*  }*/}
-              {/*/>*/}
               <Route
                 path="/friends"
                 element={

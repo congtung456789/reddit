@@ -23,10 +23,21 @@ export const navigateSlice = createSlice({
       room: null,
     },
     showAddMember:{
-      open:false
+      open:false,
+    },
+    removeMember:{
+      open:false,
+    },
+    title:{
+      name:"",
+      type:"",
     },
     roomName:{
       name:"",
+      open:false,
+    },
+    popup:{
+      open:false,
     }
   },
   reducers: {
@@ -51,8 +62,20 @@ export const navigateSlice = createSlice({
     setShowAction:(state, action)=>{
       state.showAddMember.open = action.payload;
     },
+    setTitle:(state, action)=>{
+      state.title.name = action.payload;
+    },
     setFullName:(state,action)=>{
       state.roomName.name = action.payload
+    },
+    setPopup:(state,action)=>{
+      state.popup.open = action.payload
+    },
+    setPopupRename:(state,action)=>{
+      state.roomName.open = action.payload
+    },
+    setRemoveMember:(state,action)=>{
+      state.removeMember.open = action.payload
     }
   },
 });
@@ -65,6 +88,10 @@ export const {
   messageToggle,
   setRoom,
   setShowAction,
-  setFullName
+  setFullName,
+  setPopup,
+  setTitle,
+  setPopupRename,
+  setRemoveMember
 } = navigateSlice.actions;
 export default navigateSlice.reducer;

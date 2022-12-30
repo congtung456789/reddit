@@ -11,14 +11,20 @@ import {baseURL} from "../../utils/listContainer";
 import InputField from "../InputFields/Input";
 import {BiImageAdd} from "react-icons/bi";
 import "./uploadimageorfile.css";
-import {setShowAction} from "../../redux/navigateSlice";
+import {setPopup, setPopupRename, setRemoveMember, setShowAction} from "../../redux/navigateSlice";
+import AddMember from "./RoomFunction/AddMember";
 import Popup from "../PopUp/popUp";
 import "../PopUp/popUp.css";
+import ChangeNameGroup from "./RoomFunction/ChangeNameGroup";
+import RemoveMember from "./RoomFunction/RemoveMember";
 const ChatRoom = () => {
     const user = useSelector((state) => state.user.user?.currentUser);
     const room = useSelector((state) => state.nav.message.room);
     const roomNameGroup = useSelector((state) => state.nav.roomName.name);
-    const setOpen =  useSelector((state) => state.nav.showAddMember.open);
+    const addMember = useSelector((state) => state.nav.showAddMember.open);
+    const removeMember = useSelector((state) => state.nav.removeMember.open);
+    const popup =  useSelector((state) => state.nav.popup.open);
+    const popupChangeName =  useSelector((state) => state.nav.roomName.open);
     const [previewSource, setPreviewSource] = useState("");
     const [previewFileData, setPreviewFile] = useState(null);
     const [messages, setMessage] = useState([]);
@@ -30,6 +36,13 @@ const ChatRoom = () => {
     const scrollRef = useRef();
     const {id} = useParams();
     const dispatch = useDispatch();
+    const removeAllPopUp = ()=>{
+        dispatch(setShowAction(false));
+        dispatch(setRemoveMember(false));
+        dispatch(setPopupRename(false));
+        dispatch(setPopup(false));
+
+    }
     const axiosInstance = axios.create({
         headers: {
             token: `Bearer ${user?.accessToken}`,
@@ -62,12 +75,12 @@ const ChatRoom = () => {
 
 
     const handleGoBack = () => {
+        removeAllPopUp();
         navigate("/");
         socket.current.disconnect();
     };
-    const handleOpenAddUser = () => {
-        console.log("Gía trị của nó là " +!setOpen);
-        dispatch(setShowAction(!setOpen)) ;
+    const handlePopup = () => {
+        dispatch(setPopup(!popup)) ;
     };
 
     useEffect(() => {
@@ -104,13 +117,12 @@ const ChatRoom = () => {
     useEffect(() => {
         const getMessage = async () => {
             try {
-                const partnerId = room?.members.filter((m) => m !== user?._id);
-
+                let partnerId = room?.members.filter((m) => m !== user?._id);
+                partnerId.push(room?.membersRemove);
                 axiosInstance.post(`${baseURL}/users/get-all-user-with-id`,{
                     users: partnerId,
                 }).then((res)=>{
                     setPartner(res.data);
-                    console.log(res.data);
                 });
                 axiosInstance.get(`${baseURL}/message/${room._id}`).then((msgRes)=>{
                     setMessage(msgRes.data);
@@ -166,7 +178,6 @@ const ChatRoom = () => {
                 conversationId: id,
                 isFile: true
             };
-            console.log({base64: previewFileData});
             socket.current.emit("sendPhoto", {
                 senderId: user._id,
                 receiverId,
@@ -217,17 +228,29 @@ const ChatRoom = () => {
                         <IoIosArrowRoundBack size={"42px"}/>
                     </div>
                     {roomNameGroup}
-                    <div className="add-member" onClick={handleOpenAddUser}>
+                    <div className="add-member" onClick={handlePopup}>
                         <BsThreeDotsVertical size={"20px"}/>
                     </div>
                 </div>
-                {setOpen && (
-                    <div className="search-user-add">
-                        {/*<span className="close-icon" onClick={handleOpenAddUser}>x</span>*/}
-                        <p className="close close-icon" onClick={handleOpenAddUser}>x</p>
-                        <Popup/>
-                    </div>
-                )}
+                <div className="search-user-add">
+                    {popup && (
+                        <>
+                            <p className="close close-icon" onClick={handlePopup}>x</p>
+                            <Popup
+                                conversationId = {id}
+                                socket={socket}
+                            />
+                        </>
+                    )}
+                    {addMember && (<AddMember/>)}
+                    {popupChangeName && (
+                        <ChangeNameGroup
+                            conversationId = {id}
+                        />)}
+                    {removeMember && (<RemoveMember
+                        conversationId = {id}
+                    />)}
+                </div>
             </div>
             <div className="chat-box-top">
                 {messages.map((msg) => {

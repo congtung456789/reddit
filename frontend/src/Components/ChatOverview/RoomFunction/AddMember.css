@@ -31,7 +31,7 @@ header {
     margin: 0;
 }
 .search-container{
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 .info-container {
     display: flex;
@@ -111,13 +111,13 @@ header {
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     font-size: 1.15rem;
-    margin-left: 1rem;
+    /*margin-left: 1rem;*/
     border-radius: 4px;
     background: rgba(66, 66, 66, 0.78);
     border-radius: 4px;
     box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
     backdrop-filter: blur(11.4px);
-    margin-left: 54%;
+    /*margin-left: 54%;*/
     -webkit-backdrop-filter: blur(11.4px);
 }
 .buttonClose{

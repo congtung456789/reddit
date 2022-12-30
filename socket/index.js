@@ -20,10 +20,12 @@ let users = [];
 const addUser = (userId, socketId) => {
     !users.some((user) => user.userId === userId) &&
     users.push({userId, socketId});
+    console.log("Add user success "+ userId + " ----- "+ socketId);
 };
 
 const removeUser = (socketId) => {
     users = users.filter((user) => user.socketId !== socketId);
+    console.log("remove user success "+socketId);
 };
 
 const getUser = (userId) => {
@@ -34,6 +36,7 @@ io.on("connection", (socket) => {
     console.log("user connected");
     socket.on("addUser", (userId) => {
         addUser(userId, socket.id);
+        console.log(userId);
         io.emit("getUsers", users);
     });
 
@@ -41,27 +44,30 @@ io.on("connection", (socket) => {
     socket.on("sendMessage", ({senderId, receiverId, text}) => {
         console.log("users: " + users);
         console.log("message is" + text);
-        const user = getUser(receiverId);
-        console.log(user);
-        io.to(user?.socketId).emit("getMessage", {
-            senderId,
-            text,
+        receiverId.forEach((value,index)=>{
+            const user = getUser(value);
+            console.log(user);
+            io.to(user?.socketId).emit("getMessage", {
+                senderId,
+                text,
+            });
         });
     });
     // Handle image
     socket.on("sendPhoto", async ({senderId, receiverId, data,fileName}) => {
         console.log("users send image : " + users);
-        const user = getUser(receiverId);
         let urlFileName = "Error! can't send file";
         try{
             urlFileName =  await minioUtils.uploadFile(data, process.env.MINIO_BUCKET_MESSAGE, fileName);
         }catch (Error){
             console.log(Error);
         }
-        console.log(urlFileName);
-        io.to(user?.socketId).emit("receiveImage", {
-            senderId,
-            urlFileName,
+        receiverId.forEach((value,index)=>{
+            const user = getUser(value);
+            io.to(user?.socketId).emit("receiveImage", {
+                senderId,
+                urlFileName,
+            });
         });
         console.log("Send image success!");
     });

@@ -1,0 +1,139 @@
+header {
+    height: 300px;
+
+}
+.info-edit {
+    cursor: pointer;
+    align-self: flex-end;
+    border: 2px solid white;
+    padding: 0.45rem;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.feed-logo{
+    height: 100px;
+}
+.search-user {
+    text-align: start;
+    margin-left: 100%;
+    font-size: 1rem;
+    align-self: center;
+    width: 171%;
+}
+.follow{
+    background-color: transparent;
+    border: 3px solid white;
+    border-radius: 14px;
+    padding: 0.5rem;
+    font-weight: 700;
+    font-family: "Noto Sans", sans-serif;
+    margin: 0;
+}
+.search-container{
+    flex-direction: column;
+}
+.info-container {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    padding-left: 2rem;
+    color: white;
+}
+.info-displayname {
+    width: 100%;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.info-username {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    font-weight: 400;
+}
+.info-age,
+.info-about {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-ava {
+    width: 85px;
+    height: 130px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.go-back {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+}
+
+.edit-goback{
+    margin: 1rem 1.15rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.follow-container{
+    z-index: 10;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: "Inter",sans-serif;
+}
+.follower {
+    flex:1;
+    margin:0.5rem 0;
+}
+.following{
+    flex:1;
+    margin:0.5rem 0;
+}
+.follower-num, .following-num {
+    font-weight: 700;
+}
+.follower-title, .following-title{
+    color:#a1a1a4;
+}
+.chat-follow-container{
+    display:flex;
+    align-items:center;
+    gap:1.5rem;
+}
+.chat{
+    cursor:pointer;
+}
+/*.feed-username-display{*/
+/*    text-align: center;*/
+/*    width: 100%;*/
+/*    -webkit-backdrop-filter: blur(5px);*/
+/*    backdrop-filter: blur(5px);*/
+/*    font-size: 1.15rem;*/
+/*    margin-left: 1rem;*/
+/*    border-radius: 4px;*/
+/*    background: rgba(66, 66, 66, 0.78);*/
+/*    border-radius: 4px;*/
+/*    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);*/
+/*    backdrop-filter: blur(11.4px);*/
+/*    margin-left: 54%;*/
+/*    -webkit-backdrop-filter: blur(11.4px);*/
+/*}*/
+.buttonClose{
+    margin-top: 0rem;
+    position: absolute;
+    right: 76px;
+    bottom: 25px;
+    width: 7%;
+}
+.titleClass{
+    font-size: 20px;
+}
+.buttonChange{
+    margin-top: 0rem;
+    position: absolute;
+    bottom: 25px;
+    width: 8%;
+    left: 485px;
+}

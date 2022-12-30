@@ -1,15 +1,16 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
-import {baseURL} from "../../utils/listContainer";
+import {baseURL} from "../../../utils/listContainer";
 import {useSelector,useDispatch} from "react-redux";
-import InputField from "../InputFields/Input";
+import InputField from "../../InputFields/Input";
 import "./AddMember.css";
 import {io} from "socket.io-client";
 import ReactJsAlert from "reactjs-alert";
-import {setShowAction} from "../../redux/navigateSlice";
+import {setShowAction} from "../../../redux/navigateSlice";
 const AddMember = () => {
     const socket = useRef();
     const titleState =  useSelector((state) => state.nav.title.name);
+    const actionType = useSelector((state) => state.nav.title.type);
     const user = useSelector((state) => state.user.user?.currentUser);
     const room = useSelector((state) => state.nav.message.room);
     const setOpen =  useSelector((state) => state.nav.showAddMember.open);
@@ -33,6 +34,7 @@ const AddMember = () => {
                 socket.current.emit("addUser", id);
                 //dispatch(setShowAction(!setOpen));
                 setType("success");
+                setSearch("");
             }else{
                 setType("false");
             }

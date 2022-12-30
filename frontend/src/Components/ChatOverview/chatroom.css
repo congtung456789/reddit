@@ -160,12 +160,11 @@
 }
 
 .msg-img-mypic {
-    order: 2;
     width: 36px;
     height: 36px;
     border-radius: 50%;
     object-fit: cover;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 .chat-msg-input {
@@ -259,4 +258,22 @@
     border-radius: 30px;
     height: 60px;
     width: 12%;
+}
+.msg-name{
+    margin-top: 5px;
+    font-size: 11px;
+}
+.messageProfile{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.me{
+    order: 2;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 10px;
+    margin-bottom: 25px;
 }

@@ -14,6 +14,7 @@ const useFetchData = (url, token, type, id) => {
           const res = await axios.get(url, {
             headers: { token: `Bearer ${token}` },
           });
+          console.log(res.data);
           setApiData(res.data);
           setLoading(false);
         } else if (type === "post") {
@@ -26,8 +27,10 @@ const useFetchData = (url, token, type, id) => {
           setApiData(res.data);
           setLoading(false);
         }
+        console.log("Gía trị API "+apiData);
       } catch (err) {
         setError(err);
+        console.log("Gía trị lỗi là "+err);
         setLoading(false);
       }
     };

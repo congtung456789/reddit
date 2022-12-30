@@ -10,11 +10,14 @@ const Message = (props) => {
   return (
     <section className={own ? "message own" : "message"}>
       <div className="messageTop">
-        <img className={own ? "msg-img-mypic" : "msg-img"}
-             style={{backgroundColor: `${own ? user?.theme : partner?.theme}`}}
-             src={own ? `${userPic}` : `${partner?.profilePicture}`}
-             alt="pic"
-        />
+          <div className={own ?"messageProfile me":"messageProfile"}>
+              <img className={own ? "msg-img-mypic" : "msg-img"}
+                   style={{backgroundColor: `${own ? user?.theme : partner?.theme}`}}
+                   src={own ? `${userPic}` : `${partner?.profilePicture}`}
+                   alt="pic"
+              />
+              <p className={"msg-name"}>{own ? user?.username : partner?.username}</p>
+          </div>
           {message.isFile === true ?
               (<p className="messageText"><img src={message.text} alt="chosen" className="imageSendData"/></p>):
               (<p className="messageText">{message.text}</p>)}
