@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
 const minioUtils = require("./MinioUtils");
+const {isExtImage} = require("./Commons");
 const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -57,8 +58,10 @@ io.on("connection", (socket) => {
     socket.on("sendPhoto", async ({senderId, receiverId, data,fileName}) => {
         console.log("users send image : " + users);
         let urlFileName = "Error! can't send file";
+        let type = undefined;
         try{
             urlFileName =  await minioUtils.uploadFile(data, process.env.MINIO_BUCKET_MESSAGE, fileName);
+            type = isExtImage(data)? "img":"video";
         }catch (Error){
             console.log(Error);
         }
@@ -67,6 +70,7 @@ io.on("connection", (socket) => {
             io.to(user?.socketId).emit("receiveImage", {
                 senderId,
                 urlFileName,
+                type
             });
         });
         console.log("Send image success!");

@@ -130,8 +130,28 @@ input[type="file"] {
   padding: 6px 12px;
   cursor: pointer;
 }
+.makepost-video-label {
+  background-color: #0386d1;
+  margin: 1rem 0;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 40%;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
 @media screen and (min-width: 1000px){
   .makepost-file-label {
+    background-color: #0386d1;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 10%;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  .makepost-video-label {
     background-color: #0386d1;
     margin: 1rem 0;
     border-radius: 8px;
@@ -153,10 +173,24 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
   }
+  .makepost-video-label {
+    background-color: #0386d1;
+    margin: 1rem 0;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 10%;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
 }
 .makepost-file-label::before {
   font-size: 1rem;
   content: "Upload image";
+}
+.makepost-video-label::before {
+  font-size: 1rem;
+  content: "Upload video";
 }
 .makepost-img-preview > img {
   max-width: 300px;
@@ -181,9 +215,20 @@ input[type="file"] {
   top: -5%;
   position: absolute;
 }
-
+.video-show{
+  width: 400px;
+}
 /* Post.css */
-
+.remove-preview-video {
+  cursor: pointer;
+  background-color: black;
+  font-size: 1.25rem;
+  padding: 0rem 0.5rem;
+  border-radius: 8px;
+  right: -37%;
+  top: -5%;
+  position: absolute;
+}
 .posts {
   background-color: rgb(49, 49, 49);
   margin-bottom: 1rem;

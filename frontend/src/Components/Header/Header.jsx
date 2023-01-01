@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { baseURL } from "../../utils/listContainer";
 import { AiOutlineMessage } from "react-icons/ai";
 import { followUser, getUser } from "../../redux/apiRequests";
 import "./header.css";
 import { setRoom } from "../../redux/navigateSlice";
+
 const Header = (props) => {
   const user = useSelector((state) => state.user.user?.currentUser);
   const currentUser = useSelector((state) => state.user.otherUser?.otherUser);
@@ -39,7 +39,7 @@ const Header = (props) => {
 
   const goToChat = async () => {
     try {
-      const res = await axios.get(`${baseURL}/conversation/find/${id}/${user?._id}`, {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/conversation/find/${id}/${user?._id}`, {
         headers: { token: `Bearer ${user?.accessToken}` },
       });
       if (res.data) {
@@ -51,7 +51,7 @@ const Header = (props) => {
           receiverId: id,
         };
         await axios
-          .post(`${baseURL}/conversation`, newConvo, {
+          .post(`${process.env.REACT_APP_BACKEND_URL}/conversation`, newConvo, {
             headers: { token: `Bearer ${user?.accessToken}` },
           })
           .then((res) => {

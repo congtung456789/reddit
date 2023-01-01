@@ -5,12 +5,11 @@ import FeedLayout from "../Layout/FeedLayout";
 import NewsList from "./NewsList";
 import React  from 'react';
 import "./news.css";
-import { baseURL } from "../../../utils/listContainer";
 
 const News = () => {
   const user = useSelector((state) => state.user.user?.currentUser);
   const { isLoading, apiData } = useFetchData(
-    `${baseURL}/news?page=10&limit=2`,
+    `${process.env.REACT_APP_BACKEND_URL}/news?page=10&limit=2`,
     user?.accessToken,
     "get"
   );

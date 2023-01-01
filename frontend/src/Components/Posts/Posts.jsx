@@ -150,10 +150,19 @@ const Posts = React.forwardRef((props, ref) => {
         >
           {post?.description}
         </div>
-        {post?.imageUrl && (
+        {post?.imageUrl && post?.type === "img" ? (
           <div className="post-image-container">
             <img className="post-image" src={post?.imageUrl} alt="postImg" />
           </div>
+        ):(
+          <div className="post-image-container">
+          <img className="post-image" src={post?.imageUrl} alt="postImg" />
+          </div>
+          )}
+        {post?.imageUrl && post?.type === "video" && (
+            <div className="post-image-container">
+              <video src={post?.imageUrl} controls></video>
+            </div>
         )}
       </div>
       <div className="post-interactions">

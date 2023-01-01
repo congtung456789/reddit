@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
-import {baseURL} from "../../../utils/listContainer";
 import {useSelector,useDispatch} from "react-redux";
 import InputField from "../../InputFields/Input";
 import "./ChangeNameGroup.css";
 import ReactJsAlert from "reactjs-alert";
 import {setPopupRename,setFullName} from "../../../redux/navigateSlice";
+
 const AddMember = (props) => {
     const titleState =  useSelector((state) => state.nav.title.name);
     const user = useSelector((state) => state.user.user?.currentUser);
@@ -21,7 +21,7 @@ const AddMember = (props) => {
             conversationName: search
         };
         await axios
-            .post(`${baseURL}/conversation/update-group-name`, data ,{
+            .post(`${process.env.REACT_APP_BACKEND_URL}/conversation/update-group-name`, data ,{
                 headers: { token: `Bearer ${user.accessToken}` },
             }).then((res) => {
                 if (res.status === 200) {

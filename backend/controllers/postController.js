@@ -11,9 +11,6 @@ const postController = {
         let fileName = createFileName(req.body.imageUrl);
         let fileBuffer = convertToBuffer(req.body.imageUrl);
         await minioUtils.uploadFile(fileBuffer, process.env.MINIO_BUCKET_POST, fileName);
-        // const result = await cloudinary.uploader.upload(req.body.imageUrl, {
-        //   upload_preset: "post_image",
-        // });
         const makePost = {
           ...req.body,
           imageUrl: fileName,

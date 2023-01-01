@@ -2,16 +2,16 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import FeedLayout from "../Feed/Layout/FeedLayout";
 import useFetchData from "../Hooks/useFetchData";
-import { baseURL } from "../../utils/listContainer";
 import Loading from "../Loading/Loading";
 import Posts from "../Posts/Posts";
 import FullPost from "../Posts/FullPost/FullPost";
 import React, { Component }  from 'react';
+
 const Friends = () => {
   const fullPost = useSelector((state) => state.nav.fullPost);
   const user = useSelector((state) => state.user.user?.currentUser);
   const { isLoading, apiData, serverError } = useFetchData(
-    `${baseURL}/post/timeline`,
+    `${process.env.REACT_APP_BACKEND_URL}/post/timeline`,
     user?.accessToken,
     "post",
     user._id

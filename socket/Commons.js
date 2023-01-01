@@ -8,6 +8,11 @@ const createFileName = (inputURI) => {
 const convertToBuffer = (inputURI) => {
     return Buffer.from(inputURI.split(",")[1], 'base64');
 }
+const  isExtImage = (fileName) => {
+    console.log(fileName);
+    let ext = fileName.split('.')[1];
+    const acceptedImageTypes = ['gif', 'jpeg', 'png','jpg'];
+    return acceptedImageTypes.includes(ext);
+}
 
-
-module.exports = {createFileName,convertToBuffer};
+module.exports = {createFileName,convertToBuffer,isExtImage};

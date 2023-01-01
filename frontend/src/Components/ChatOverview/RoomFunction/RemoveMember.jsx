@@ -1,6 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
-import {baseURL} from "../../../utils/listContainer";
 import {useSelector, useDispatch} from "react-redux";
 import "./RemoveMember.css";
 import {setRemoveMember} from "../../../redux/navigateSlice";
@@ -16,7 +15,7 @@ const RemoveMember = (props) => {
     const [title, setTitle] = useState("");
     useEffect(() => {
         const fetchData = async () => {
-            const result = await axios.get( `${baseURL}/conversation/get-user-conversation/${props.conversationId}`,
+            const result = await axios.get( `${process.env.REACT_APP_BACKEND_URL}/conversation/get-user-conversation/${props.conversationId}`,
                 { headers: { token: `Bearer ${user.accessToken}` }});
             setDataUser(result.data);
             console.log(result.data);
@@ -36,7 +35,7 @@ const RemoveMember = (props) => {
                 userRemoveId: users._id
             };
             await axios
-                .post(`${baseURL}/conversation/remove-user-conversation`, data ,{
+                .post(`${process.env.REACT_APP_BACKEND_URL}/conversation/remove-user-conversation`, data ,{
                     headers: { token: `Bearer ${user.accessToken}` },
                 }).then((res) => {
                     if (res.status===200){

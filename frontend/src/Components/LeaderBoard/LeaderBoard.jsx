@@ -1,8 +1,6 @@
 import FeedLayout from "../Feed/Layout/FeedLayout";
 import "./leaderboard.css";
 import { FaTrophy } from "react-icons/fa";
-import { baseURL } from "../../utils/listContainer";
-import { RiCopperCoinLine } from "react-icons/ri";
 import useFetchData from "../Hooks/useFetchData";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +14,7 @@ const LeaderBoard = () => {
     isLoading,
     serverError,
   } = useFetchData(
-    `${baseURL}/users/${user?._id}/leaderboard`,
+    `${process.env.REACT_APP_BACKEND_URL}/users/${user?._id}/leaderboard`,
     user?.accessToken,
     "get"
   );

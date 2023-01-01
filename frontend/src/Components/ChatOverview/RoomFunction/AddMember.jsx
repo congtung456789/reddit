@@ -1,12 +1,12 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
-import {baseURL} from "../../../utils/listContainer";
 import {useSelector,useDispatch} from "react-redux";
 import InputField from "../../InputFields/Input";
 import "./AddMember.css";
 import {io} from "socket.io-client";
 import ReactJsAlert from "reactjs-alert";
 import {setShowAction} from "../../../redux/navigateSlice";
+
 const AddMember = () => {
     const socket = useRef();
     const titleState =  useSelector((state) => state.nav.title.name);
@@ -27,7 +27,7 @@ const AddMember = () => {
             conversationId: conversationId,
             userAddId: id,
         }
-        await axios.post(`${baseURL}/conversation/add-user-conversation`, newUser, {
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/conversation/add-user-conversation`, newUser, {
             headers: {token: `Bearer ${user.accessToken}`},
         }).then((res) => {
             if (res.status === 200) {
@@ -44,7 +44,7 @@ const AddMember = () => {
     };
     const searchUsername = async () => {
         await axios
-            .get(`${baseURL}/users?username=${search}`, {
+            .get(`${process.env.REACT_APP_BACKEND_URL}/users?username=${search}`, {
                 headers: { token: `Bearer ${user.accessToken}` },
             })
             .then((res) => {
@@ -56,7 +56,7 @@ const AddMember = () => {
             });
     };
     useEffect(()=>{
-        socket.current = io("http://192.168.0.103:8089", {
+        socket.current = io(`${process.env.REACT_APP_SOCKET_URL}`, {
             transports: ["websocket"],
         });
     });

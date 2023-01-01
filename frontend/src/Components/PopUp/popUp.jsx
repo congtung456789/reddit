@@ -3,7 +3,6 @@ import "./popUp.css"
 import {useDispatch, useSelector} from "react-redux";
 import {setShowAction, setPopup, setTitle, setPopupRename, setRemoveMember} from "../../redux/navigateSlice";
 import axios from "axios";
-import {baseURL} from "../../utils/listContainer";
 import {useNavigate} from "react-router-dom";
 
 const Popup = (props) => {
@@ -47,7 +46,7 @@ const Popup = (props) => {
             userRemoveId: user._id
         };
         await axios
-            .post(`${baseURL}/conversation/remove-user-conversation`, data ,{
+            .post(`${process.env.REACT_APP_BACKEND_URL}/conversation/remove-user-conversation`, data ,{
                 headers: { token: `Bearer ${user.accessToken}` },
             }).then((res) => {
                 if (res.status===200){

@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Conversation from "./Conversation";
-import { baseURL } from "../../utils/listContainer";
 import { setRoom,setFullName } from "../../redux/navigateSlice";
 import Loading from "../Loading/Loading";
+
 const ChatOverview = () => {
   //dummy data
   const [conversation, setConversations] = useState([]);
@@ -27,7 +27,7 @@ const ChatOverview = () => {
     const getConversation = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${baseURL}/conversation/` + user?._id, {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/conversation/` + user?._id, {
           headers: { token: `Bearer ${user?.accessToken}` },
         });
         setLoading(false);

@@ -1,13 +1,12 @@
 import React, {useEffect, useRef, useState} from "react";
 import {IoIosArrowRoundBack} from "react-icons/io";
-import {BsFillFileArrowUpFill, BsThreeDotsVertical} from "react-icons/bs";
+import {BsFillFileArrowUpFill, BsThreeDotsVertical,BsEmojiSmile} from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 import {io} from "socket.io-client";
 import "./chatroom.css";
 import {useNavigate, useParams} from "react-router-dom";
 import Message from "./Message";
-import {baseURL} from "../../utils/listContainer";
 import InputField from "../InputFields/Input";
 import {BiImageAdd} from "react-icons/bi";
 import "./uploadimageorfile.css";
@@ -17,6 +16,9 @@ import Popup from "../PopUp/popUp";
 import "../PopUp/popUp.css";
 import ChangeNameGroup from "./RoomFunction/ChangeNameGroup";
 import RemoveMember from "./RoomFunction/RemoveMember";
+import Picker from 'emoji-picker-react';
+import {isFileImage,isExtImage} from '../../utils/listContainer';
+
 const ChatRoom = () => {
     const user = useSelector((state) => state.user.user?.currentUser);
     const room = useSelector((state) => state.nav.message.room);
@@ -30,6 +32,7 @@ const ChatRoom = () => {
     const [messages, setMessage] = useState([]);
     const [newMsg, setNewMsg] = useState("");
     const [receivedMsg, setReceivedMsg] = useState("");
+    const [emoji, setEmoji] = useState(false);
     const socket = useRef();
     const [partner, setPartner] = useState([]);
     const navigate = useNavigate();
@@ -84,7 +87,7 @@ const ChatRoom = () => {
     };
 
     useEffect(() => {
-        socket.current = io("http://192.168.0.103:8089", {
+        socket.current = io(`${process.env.REACT_APP_SOCKET_URL}`, {
             transports: ["websocket"],
         });
         socket.current.on("getMessage", (data) => {
@@ -98,6 +101,7 @@ const ChatRoom = () => {
             setReceivedMsg({
                 sender: data.senderId,
                 text: data.urlFileName,
+                type: data.type,
                 isFile: true,
                 createdAt: Date.now(),
             });
@@ -119,12 +123,12 @@ const ChatRoom = () => {
             try {
                 let partnerId = room?.members.filter((m) => m !== user?._id);
                 partnerId.push(room?.membersRemove);
-                axiosInstance.post(`${baseURL}/users/get-all-user-with-id`,{
+                axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/users/get-all-user-with-id`,{
                     users: partnerId,
                 }).then((res)=>{
                     setPartner(res.data);
                 });
-                axiosInstance.get(`${baseURL}/message/${room._id}`).then((msgRes)=>{
+                axiosInstance.get(`${process.env.REACT_APP_BACKEND_URL}/message/${room._id}`).then((msgRes)=>{
                     setMessage(msgRes.data);
                 }).catch((err) => {
                     console.log(err);
@@ -156,7 +160,7 @@ const ChatRoom = () => {
                 text: newMsg,
             });
             try {
-                const res = await axios.post(`${baseURL}/message`, message, {
+                const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/message`, message, {
                     headers: {token: `Bearer ${user.accessToken}`},
                 });
                 console.log(res.data);
@@ -172,11 +176,16 @@ const ChatRoom = () => {
             });
             let ext = previewSource.split(',')[0].split(':')[1].split(';')[0].split("/")[1];
             let fileName = new Date().getTime().toString() + "." + ext;
+            let file = "img";
+            if(!isExtImage(previewSource)){
+                file = "video";
+            }
             const message = {
                 sender: user?._id,
                 text: fileName,
                 conversationId: id,
-                isFile: true
+                isFile: true,
+                type:file
             };
             socket.current.emit("sendPhoto", {
                 senderId: user._id,
@@ -185,7 +194,7 @@ const ChatRoom = () => {
                 fileName: fileName
             });
             try {
-                const res = await axios.post(`${baseURL}/message`, message, {
+                const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/message`, message, {
                     headers: {token: `Bearer ${user.accessToken}`},
                 });
                 console.log("Gía trị respone là ");
@@ -200,7 +209,11 @@ const ChatRoom = () => {
             }
         }
     };
-
+    const onEmojiClick = (event, emojiObject) => {
+        let newMessage = newMsg+event.emoji;
+        console.log(newMessage);
+        setNewMsg(newMessage);
+    };
     useEffect(() => {
         return scrollRef?.current?.scrollIntoView({behavior: "smooth"});
     }, [messages]);
@@ -220,6 +233,12 @@ const ChatRoom = () => {
         setPreviewSource("");
         setPreviewFile(null);
     };
+    const showEmoji = () => {
+        setEmoji(!emoji);
+    }
+    const showEmojiOff = ()=>{
+        setEmoji(false);
+    }
     return (
         <section className="convo-container">
             <div className="convo-header">
@@ -272,21 +291,31 @@ const ChatRoom = () => {
                         {" "}
                         X{" "}
                     </p>
-                    <img src={previewSource} alt="chosen"/>
+                    {isExtImage(previewSource)?(
+                        <img src={previewSource} alt="chosen"/>
+                    ):(
+                        <video src={previewSource} controls className={"imageSendData"}></video>
+                    )}
+
                 </div>
             )}
             <div className="chat-box-bot">
-                <InputField
-                    
-                    classStyle="chat-msg-input"
-                    inputType="textarea"
-                    placeholder="write something..."
-                    setData={setNewMsg}
-                    value={newMsg}
-                    data={newMsg}
-                />
+                <div className={"inputField"} onClick={showEmojiOff}>
+                    <InputField
+                        classStyle="chat-msg-input"
+                        inputType="textarea"
+                        placeholder="write something..."
+                        setData={setNewMsg}
+                        value={newMsg}
+                        data={newMsg}
+                    />
+                </div>
+
                 {!isMobile && ( <div className="upload-web">
-                    <div className="image-upload">
+                        <div className="image-upload">
+                            <BsEmojiSmile onClick={showEmoji}/>
+                        </div>
+                    <div className="image-upload"  onClick={showEmojiOff}>
                         <label htmlFor="file-input">
                             <BiImageAdd/>
                         </label>
@@ -295,16 +324,22 @@ const ChatRoom = () => {
                                name="image"
                                onChange={handleFileInputChange}/>
                     </div>
-                    <div className="image-upload">
-                        <label htmlFor="file-input-folder">
-                            <BsFillFileArrowUpFill/>
-                        </label>
-                        <input id="file-input-folder"
-                               type="file"
-                               name="image"
-                               onChange={handleFileInputChange}/>
+                    {/*<div className="image-upload"  onClick={showEmojiOff}>*/}
+                    {/*    <label htmlFor="file-input-folder">*/}
+                    {/*        <BsFillFileArrowUpFill/>*/}
+                    {/*    </label>*/}
+                    {/*    <input id="file-input-folder"*/}
+                    {/*           type="file"*/}
+                    {/*           name="image"*/}
+                    {/*           onChange={handleFileInputChange}/>*/}
+                    {/*</div>*/}
+                </div>
+                )}
+                {emoji && (
+                    <div className={"emoji-show"}>
+                        <Picker onEmojiClick={onEmojiClick} disableAutoFocus={true} native />
                     </div>
-                </div>)}
+                )}
                 <button className="chat-submit" onClick={submitMessage}>
                     Send
                 </button>

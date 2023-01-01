@@ -21,7 +21,11 @@
     flex-wrap: nowrap;
     justify-content: center;
 }
-
+.emoji-show {
+    position: absolute;
+    bottom: 19px;
+    right: 385px;
+}
 .contact-container {
     display: flex;
     width: 100%;
@@ -187,7 +191,9 @@
     padding: 6rem 0.75rem 0rem 0.75rem;
     margin-top: 4%;
 }
-
+.inputField{
+    width: 122%;
+}
 .chat-box-bot {
     margin-top: 5px;
     padding: 0 0.75rem;

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { baseURL } from "../../../utils/listContainer";
 import { AiOutlineMessage, AiOutlineHome } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { messageToggle, sideBarToggle } from "../../../redux/navigateSlice";
@@ -26,7 +25,7 @@ const FeedHeader = (props) => {
   };
   const searchUsername = async () => {
     await axios
-      .get(`${baseURL}/users?username=${search}`, {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/users?username=${search}`, {
         headers: { token: `Bearer ${user.accessToken}` },
       })
       .then((res) => {

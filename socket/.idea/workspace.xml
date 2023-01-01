@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6452722e-413e-4a36-a23d-eae1c94e4c23" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/controllers/postController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/controllers/postController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/models/Message.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/models/Message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/models/Post.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/models/Post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Auth/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Auth/Register.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/ChatRoom.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/ChatRoom.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/Message.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/Message.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/RoomFunction/AddMember.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/RoomFunction/AddMember.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/chatroom.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/ChatOverview/chatroom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Posts/MakePost.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Posts/MakePost.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Posts/Posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Posts/Posts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/Components/Posts/post.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/Components/Posts/post.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/listContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/listContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Commons.js" beforeDir="false" afterPath="$PROJECT_DIR$/Commons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2FWm4pJ7ScoiAxJNx7H4APa8YC0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IT/VueJS/socket-io-react-example&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6452722e-413e-4a36-a23d-eae1c94e4c23" name="Changes" comment="" />
+      <created>1664616025920</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1664616025920</updated>
+      <workItem from="1664616027481" duration="1263000" />
+      <workItem from="1664650963165" duration="624000" />
+      <workItem from="1664710827872" duration="275000" />
+      <workItem from="1664814040447" duration="8000" />
+      <workItem from="1664898288525" duration="27000" />
+      <workItem from="1664898358420" duration="65000" />
+      <workItem from="1664979857191" duration="1794000" />
+      <workItem from="1665060333501" duration="1939000" />
+      <workItem from="1665156342334" duration="4201000" />
+      <workItem from="1665208359141" duration="594000" />
+      <workItem from="1665227140173" duration="595000" />
+      <workItem from="1665503916850" duration="730000" />
+      <workItem from="1665764930191" duration="742000" />
+      <workItem from="1665804828220" duration="2340000" />
+      <workItem from="1665823988738" duration="3781000" />
+      <workItem from="1666280106825" duration="5259000" />
+      <workItem from="1666429960895" duration="2167000" />
+      <workItem from="1666442108407" duration="2489000" />
+      <workItem from="1666496710997" duration="1178000" />
+      <workItem from="1666522097542" duration="6658000" />
+      <workItem from="1666533928729" duration="7707000" />
+      <workItem from="1666543649338" duration="597000" />
+      <workItem from="1666955142838" duration="4130000" />
+      <workItem from="1667013589240" duration="2139000" />
+      <workItem from="1667055788240" duration="3309000" />
+      <workItem from="1667095255123" duration="1703000" />
+      <workItem from="1667113049973" duration="1329000" />
+      <workItem from="1667570088102" duration="120000" />
+      <workItem from="1667734476832" duration="174000" />
+      <workItem from="1667827230861" duration="2069000" />
+      <workItem from="1668234898813" duration="710000" />
+      <workItem from="1668335405778" duration="647000" />
+      <workItem from="1668350727671" duration="1503000" />
+      <workItem from="1668442378469" duration="968000" />
+      <workItem from="1668514846718" duration="2584000" />
+      <workItem from="1668616117203" duration="607000" />
+      <workItem from="1668617943628" duration="672000" />
+      <workItem from="1668688238137" duration="4556000" />
+      <workItem from="1668706152029" duration="1474000" />
+      <workItem from="1668792132954" duration="539000" />
+      <workItem from="1668961870736" duration="766000" />
+      <workItem from="1669044346100" duration="2403000" />
+      <workItem from="1669127568055" duration="2225000" />
+      <workItem from="1669309708772" duration="105000" />
+      <workItem from="1669485926629" duration="1216000" />
+      <workItem from="1671983658478" duration="437000" />
+      <workItem from="1672325108575" duration="4223000" />
+      <workItem from="1672480616071" duration="1877000" />
+    </task>
+    <task id="LOCAL-00001" summary="change save file cloudinary to minio">
+      <created>1664710897325</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664710897325</updated>
+    </task>
+    <task id="LOCAL-00002" summary="change save file cloudinary to minio">
+      <created>1667827429391</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667827429391</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change save file cloudinary to minio" />
+    <option name="LAST_COMMIT_MESSAGE" value="change save file cloudinary to minio" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/MinioUtils.js</url>
+          <line>2</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
